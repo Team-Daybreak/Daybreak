@@ -1,4 +1,4 @@
 package Daybreak.server.domain.subscribe.repository;
 
-public class SubscribeRepository {
+public interface SubscribeRepository {
 }
