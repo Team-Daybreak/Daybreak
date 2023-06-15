@@ -1,4 +1,4 @@
 package Daybreak.server.domain.comment.repsitory;
 
-public class CommentRepository {
+public interface CommentRepository {
 }
