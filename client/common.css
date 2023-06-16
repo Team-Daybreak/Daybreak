@@ -106,18 +106,27 @@ body{
     margin-bottom: 20px;
   }
   
-  header .login_box .loginForm{
+  header .login_box .loginForm {
     text-align: center;
     display: inherit;
-    width: 75px;
+    width: 100px;
     height: 45px;
     line-height: 45px;
+    border-radius: 8px;
+    background-color: #222222;
+    cursor: pointer;
+  }
+
+  header .login_box .loginForm > a{
     font-size: 16px;
     font-weight: 600;
-    color: #555;
-    border-radius: 8px;
-    background-color: #fff;
+    color: #ffffff;
     cursor: pointer;
+  }
+
+  header .login_box .loginForm > a:hover{
+    transition: 0.3s;
+    color:#a4a4a4;
   }
   
   .signup{
