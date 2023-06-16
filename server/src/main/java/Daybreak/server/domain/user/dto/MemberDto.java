@@ -3,13 +3,12 @@ package Daybreak.server.domain.user.dto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 import java.time.LocalDateTime;
 
-public class UserDto {
+public class MemberDto {
 
     @Getter
     @AllArgsConstructor

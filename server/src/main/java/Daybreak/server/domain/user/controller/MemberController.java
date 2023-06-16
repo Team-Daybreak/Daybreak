@@ -1,8 +1,8 @@
 package Daybreak.server.domain.user.controller;
 
 
-import Daybreak.server.domain.user.dto.UserDto;
-import Daybreak.server.domain.user.service.UserService;
+import Daybreak.server.domain.user.dto.MemberDto;
+import Daybreak.server.domain.user.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,13 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/users")
 @RequiredArgsConstructor
-public class UserController {
+public class MemberController {
 
-    private final UserService userService;
+    private final MemberService memberService;
 
     @PostMapping
-    public ResponseEntity postUser(@Validated @RequestBody UserDto.Post post) {
-        UserDto.Response response = userService.createUser(post);
+    public ResponseEntity postUser(@Validated @RequestBody MemberDto.Post post) {
+        MemberDto.Response response = memberService.createMember(post);
         return new ResponseEntity(response, HttpStatus.CREATED);
     }
 }

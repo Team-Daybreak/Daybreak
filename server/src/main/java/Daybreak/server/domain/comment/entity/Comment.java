@@ -1,7 +1,7 @@
 package Daybreak.server.domain.comment.entity;
 
 import Daybreak.server.domain.post.entity.Post;
-import Daybreak.server.domain.user.entity.User;
+import Daybreak.server.domain.user.entity.Member;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -26,8 +26,8 @@ public class Comment {
     private LocalDateTime ModifiedAt;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "member_id")
+    private Member member;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id")
