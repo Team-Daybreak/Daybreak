@@ -3,6 +3,7 @@ package Daybreak.server.domain.user.dto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
@@ -31,8 +32,11 @@ public class MemberDto {
     }
 
     @Getter
+    @Setter
     @AllArgsConstructor
     public static class Patch {
+
+        private Long memberId;
         @NotBlank
         @Pattern(regexp = "^[#?!@$%^&*a-zA-Z0-9]{8,16}$",
                 message = "비밀번호는 8 ~ 16 글자여야 합니다.")

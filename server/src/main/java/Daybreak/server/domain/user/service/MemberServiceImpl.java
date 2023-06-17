@@ -6,6 +6,7 @@ import Daybreak.server.domain.user.repository.MemberRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Optional;
 
 @Service
 public class MemberServiceImpl implements MemberService {
@@ -18,7 +19,6 @@ public class MemberServiceImpl implements MemberService {
 
     public MemberDto.Response createMember(MemberDto.Post post) {
 
-
         Member member = Member.builder()
                               .id(post.getId())
                               .password(post.getPassword())
@@ -26,7 +26,7 @@ public class MemberServiceImpl implements MemberService {
                               .createdAt(LocalDateTime.now())
                               .build();
 
-        Member savedMember =  memberRepository.save(member);
+        Member savedMember = memberRepository.save(member);
 
         MemberDto.Response response = MemberDto.Response.builder()
                                                         .id(savedMember.getId())
@@ -36,5 +36,24 @@ public class MemberServiceImpl implements MemberService {
                                                         .build();
 
         return response;
+    }
+
+    public MemberDto.Response updateMember(Long memberId, MemberDto.Patch patch) {
+
+//        Optional<Member> member = memberRepository.findByMemberId(memberId);
+//
+//        member.
+//
+//        Member updateMember = memberRepository.save(member);
+//
+//        MemberDto.Response response = MemberDto.Response.builder()
+//                .id(member.getId())
+//                .password(updateMember.getPassword())
+//                .nickName(updateMember.getNickName())
+//                .createdAt(member.getCreatedAt())
+//                .build();
+
+//        return response;
+    return null;
     }
 }
