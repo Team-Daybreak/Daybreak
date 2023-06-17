@@ -6,14 +6,14 @@ import Daybreak.server.domain.post.entity.Status;
 import Daybreak.server.domain.post.repository.PostRepository;
 import Daybreak.server.domain.user.entity.Member;
 import Daybreak.server.error.CommonException;
-import org.apache.logging.log4j.Logger;
+import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 @Component
 public class PostRecycleFn {
-    private final Logger log = (Logger) LoggerFactory.getLogger(PostService.class);
+    private final Logger log = LoggerFactory.getLogger(PostService.class);
     private final PostRepository postRepository;
 
     public PostRecycleFn(PostRepository postRepository) {
