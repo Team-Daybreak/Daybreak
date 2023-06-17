@@ -70,8 +70,8 @@ public class PostService {
 
         Post aPost = post.get();
 
-        if (!Objects.equals(aPost.getMember().getUserId(), member.getUserId())) {
-            log.error("AUTH-001 : 해당 유저가 작성한 글이 아닙니다. - 유저id : {}, 글번호 : {}", member.getUserId(), aPost.getId());
+        if (!Objects.equals(aPost.getMember().getMemberId(), member.getMemberId())) {
+            log.error("AUTH-001 : 해당 유저가 작성한 글이 아닙니다. - 유저id : {}, 글번호 : {}", member.getMemberId(), aPost.getId());
             throw new CommonException("AUTH-001 : 해당 유저가 작성한 글이 아닙니다.", HttpStatus.BAD_REQUEST);
         }
 
@@ -136,7 +136,7 @@ public class PostService {
         try {
             postRecycleFn.checkPostStatus(id, Status.ACTIVE, member);
         } catch (Exception e) {
-            log.error("POST-001 : 게시글 조회 실패 - uid : {}, 글번호: {}", member.getUserId(), post.get().getId());
+            log.error("POST-001 : 게시글 조회 실패 - uid : {}, 글번호: {}", member.getMemberId(), post.get().getId());
             throw new CommonException("POST-001", HttpStatus.NOT_FOUND);
         }
 
