@@ -1,6 +1,6 @@
 package Daybreak.server.domain.subscribe.entity;
 
-import Daybreak.server.domain.user.entity.User;
+import Daybreak.server.domain.user.entity.Member;
 
 import javax.persistence.*;
 
@@ -12,6 +12,6 @@ public class Subscribe {
     private Long subscribeId;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id")
-    private User user;
+    @JoinColumn(name = "member_id")
+    private Member member;
 }
