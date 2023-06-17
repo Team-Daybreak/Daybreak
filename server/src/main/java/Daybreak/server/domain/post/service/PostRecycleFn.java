@@ -4,6 +4,7 @@ import Daybreak.server.domain.post.entity.Kind;
 import Daybreak.server.domain.post.entity.Post;
 import Daybreak.server.domain.post.entity.Status;
 import Daybreak.server.domain.post.repository.PostRepository;
+import Daybreak.server.domain.user.entity.Member;
 import Daybreak.server.error.CommonException;
 import org.apache.logging.log4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,19 +20,21 @@ public class PostRecycleFn {
         this.postRepository = postRepository;
     }
 
-    public Post checkPostStatus(Long id, Kind kind, Status status) {
+    public Post checkPostStatus(Long id, Status status, Member member) {
+
+        Post post = null;
 
         try {
-            Post post = postRepository.findByIdAndCheckStatus(id, kind, status).orElse(null);
+            post = postRepository.findByIdAndCheckStatus(id, status, member).orElse(null);
 
             if (post == null) {
                 log.error("POST-002 : 존재하지 않는 게시글 [ 게시글 번호 : {}", post.getId());
             }
         } catch (Exception e) {
-            log.error("POST-001 : SQL 게시글 조회 에러 [ 게시글 번호 : {}, 카테고리 : {}, 삭제여부 : {}", id, kind, status);
+            log.error("POST-001 : SQL 게시글 조회 에러 [ 게시글 번호 : {}, 삭제여부 : {}", id, status);
             throw new CommonException("POST-001", HttpStatus.NOT_FOUND);
         }
 
-        return null;
+        return post;
     }
 }

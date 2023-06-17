@@ -1,5 +1,7 @@
 package Daybreak.server.domain.post.entity;
 
+import Daybreak.server.domain.user.entity.Member;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -25,10 +27,10 @@ public class Post {
     private String content;
 
     // --- Relation Mapping ---
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "MEMBER_ID")
-//    @JsonIgnore
-//    private User user;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MEMBER_ID")
+    @JsonIgnore
+    private Member member;
 
     @Setter
     @Enumerated(value = EnumType.STRING)
@@ -42,24 +44,26 @@ public class Post {
 
     @CreatedDate
     @Column(updatable = false)
-    private LocalDateTime createdAt;
+    private final LocalDateTime createdAt = LocalDateTime.now();
 
     @LastModifiedDate
     private LocalDateTime modifiedAt;
 
-    private Post(String title, String content) {
+    private Post(String title, String content, Kind kind, Member member) {
         this.title = title;
         this.content = content;
+        this.kind = kind;
+        this.member = member;
     }
 
-    public static Post of(String title, String content) {
-        return new Post(title, content);
+    public static Post createOf(String title, String content, Kind kind, Member member) {
+        return new Post(title, content, kind, member);
     }
 
     // --- Functions ---
     public void updatePost(String title, String content) {
         this.title = title;
         this.content = content;
-        this.getModifiedAt() = LocalDateTime.now();
+        this.modifiedAt = LocalDateTime.now();
     }
 }
