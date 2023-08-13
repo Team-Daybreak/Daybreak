@@ -1,7 +1,7 @@
 package Daybreak.server.domain.comment.entity;
 
 import Daybreak.server.domain.post.entity.Post;
-import Daybreak.server.domain.user.entity.Member;
+import Daybreak.server.domain.member.entity.Member;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 

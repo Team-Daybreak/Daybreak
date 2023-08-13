@@ -1,9 +1,8 @@
 package Daybreak.server.domain.post.dto;
 
 import Daybreak.server.domain.post.entity.Kind;
-import Daybreak.server.domain.post.entity.Post;
 import Daybreak.server.domain.post.entity.Status;
-import Daybreak.server.domain.user.entity.Member;
+import Daybreak.server.domain.member.entity.Member;
 import lombok.*;
 
 import java.time.LocalDateTime;

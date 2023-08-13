@@ -1,6 +1,6 @@
 package Daybreak.server.domain.post.entity;
 
-import Daybreak.server.domain.user.entity.Member;
+import Daybreak.server.domain.member.entity.Member;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;

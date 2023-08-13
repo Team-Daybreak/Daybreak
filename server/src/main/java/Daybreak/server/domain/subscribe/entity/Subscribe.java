@@ -1,6 +1,6 @@
 package Daybreak.server.domain.subscribe.entity;
 
-import Daybreak.server.domain.user.entity.Member;
+import Daybreak.server.domain.member.entity.Member;
 
 import javax.persistence.*;
 

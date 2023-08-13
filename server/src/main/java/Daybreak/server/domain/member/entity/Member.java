@@ -1,4 +1,4 @@
-package Daybreak.server.domain.user.entity;
+package Daybreak.server.domain.member.entity;
 
 import Daybreak.server.domain.comment.entity.Comment;
 import Daybreak.server.domain.post.entity.Post;
@@ -23,7 +23,7 @@ public class Member {
     private Long memberId;
 
     @Column(nullable = false, unique = true, updatable = false)
-    private String id;
+    private String loginId;
 
     @Column(nullable = false)
     private String password;
@@ -49,8 +49,9 @@ public class Member {
     private List<Comment> commentList = new ArrayList<>();
 
     @Builder
-    public Member(String id, String password, String nickName, LocalDateTime createdAt) {
-        this.id = id;
+    public Member(Long memberId, String loginId, String password, String nickName, LocalDateTime createdAt) {
+        this.memberId = memberId;
+        this.loginId = loginId;
         this.password = password;
         this.nickName = nickName;
         this.createdAt = createdAt;

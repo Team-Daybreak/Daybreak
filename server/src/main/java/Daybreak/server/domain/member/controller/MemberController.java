@@ -1,8 +1,8 @@
-package Daybreak.server.domain.user.controller;
+package Daybreak.server.domain.member.controller;
 
 
-import Daybreak.server.domain.user.dto.MemberDto;
-import Daybreak.server.domain.user.service.MemberService;
+import Daybreak.server.domain.member.dto.MemberDto;
+import Daybreak.server.domain.member.service.MemberService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,13 +19,19 @@ public class MemberController {
     @PostMapping
     public ResponseEntity postMember(@Validated @RequestBody MemberDto.Post post) {
         MemberDto.Response response = memberService.createMember(post);
-        return new ResponseEntity(response, HttpStatus.CREATED);
+        return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
     @PatchMapping("/{memberId}")
     public ResponseEntity patchMember(@PathVariable("memberId") Long memberId,
                                       @Validated @RequestBody MemberDto.Patch patch) {
         MemberDto.Response response = memberService.updateMember(memberId, patch);
-        return new ResponseEntity(response, HttpStatus.OK);
+        return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @DeleteMapping ("/{memberId}")
+    public ResponseEntity deleteMember(@PathVariable("memberId") Long memberId) {
+        memberService.deleteMember(memberId);
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
